@@ -15,17 +15,17 @@
      stdio_init_all();
 
     // Inicializa a arquitetura CYW43 (Wi-Fi e Bluetooth)
-     if (cyw43_arch_init()) {   
+     if (cyw43_arch_init()) {// Verifica se houve erro na inicialização   
         //0 se a inicialização for bem sucedida, um código de erro caso contrário
-         printf("Falha ao iniciar o wi-fi");
-         return -1;
+         printf("Falha ao iniciar o wi-fi"); // Mensagem de erro
+         return -1; // Sai do programa com código de erro
      }
 
      while (true) { // Loop principal
         // Definir o estado lógico do pino GPIO no chip CYW43439
-         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
-         sleep_ms(1000);
-         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
-         sleep_ms(1000);
+         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1); // Pino em nível alto
+         sleep_ms(1000); // Delay de 1000 milissegundos
+         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0); // Pino em nível baixo
+         sleep_ms(1000); // Delay de 1000 milissegundos
      }
  }
